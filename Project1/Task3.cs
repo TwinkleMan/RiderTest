@@ -5,8 +5,8 @@
         class Title
         {
             private string title;
-
-            void Show()
+            
+            public void Show()
             {
                 
             }
@@ -14,9 +14,9 @@
 
         class Author
         {
-            private string author;
+            private string author { get; set; }
 
-            void Show()
+            public void Show()
             {
                 
             }
@@ -24,17 +24,24 @@
 
         class Content
         {
-            private string content;
+            private string content { get; set; }
 
-            void Show()
+            public void Show()
             {
                 
             }
+        }
+
+        public void SetTitle(string title)
+        {
+            
         }
     }
     
     public class Task3
     {
+        Book kniga = new Book();
+
         
     }
 }
