@@ -72,7 +72,7 @@ namespace Task_4
             return result;
         }
 
-        public void PerimeterCount(Figure figure)
+        void PerimeterCount()
         {
             perimeter += SideLength(point1, point2);
 
@@ -111,6 +111,9 @@ namespace Task_4
 
         public void Show()
         {
+            CreateName();
+            PerimeterCount();
+
             Console.WriteLine("Name of the figure: {0}", figureName);
             Console.WriteLine("Perimeter: {0}", Convert.ToString(perimeter));
         }
@@ -122,12 +125,91 @@ namespace Task_4
         {
             bool flag = true;
             int count = 1;
+            int x, y;
+            string name;
+            string ans;
+
+            Point point1 = null, point2 = null, point3 = null, point4 = null, point5 = null;
+
+            Figure figure;
 
             while (flag)
             {
-                Console.WriteLine("Enter point {0}",Convert.ToString(count));
-                
+                Console.WriteLine("Enter point {0};", Convert.ToString(count));
+                Console.Write("X = ");
+                x = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Y = ");
+                y = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Name: ");
+                name = Console.ReadLine();
+                count++;
+                if (point1 == null)
+                {
+                    point1 = new Point(x,y,name);
+                } else if (point2 == null)
+                {
+                    point2 = new Point(x,y,name);
+                } else if (point3 == null)
+                {
+                    point3 = new Point(x,y,name);
+                    
+                    Console.WriteLine("Do you want to create one more point? (Y/N)");
+                    ans = Console.ReadLine();
+                    if (ans == "N")
+                    {
+                        flag = false;
+                    } else if (ans == "Y")
+                    {
+                        flag = true;
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect input, shutting down...");
+                        flag = false;
+                    }
+                    
+                } else if (point4 == null)
+                {
+                    point4 = new Point(x,y,name);
+                    
+                    Console.WriteLine("Do you want to create one more point? (Y/N)");
+                    ans = Console.ReadLine();
+                    if (ans == "N")
+                    {
+                        flag = false;
+                    } else if (ans == "Y")
+                    {
+                        flag = true;
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect input, shutting down...");
+                        flag = false;
+                    }
+                    
+                } else if (point5 == null)
+                {
+                    point5 = new Point(x,y,name);
+                    flag = false;
+                }
             }
+
+
+            if (count < 3)
+            {
+                figure = new Figure(point1,point2,point3);
+            } else if (count == 4)
+            {
+                figure = new Figure(point1,point2,point3,point4);
+            }
+            else
+            {
+                figure = new Figure(point1,point2,point3,point4,point5);
+            }
+            
+            figure.Show();
         }
     }
 }
