@@ -7,7 +7,7 @@ namespace Project1
         private double side1, side2;
         public double Area { get; }
         public double Perimeter { get; }
-            
+           
         //new constructor
         public Rectangle(double side1, double side2)
         {
